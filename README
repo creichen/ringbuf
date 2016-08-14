@@ -1,9 +1,13 @@
 A simple ring buffer implementation in Go, based on channels.
+Stephan Hagemann seems to have been the first to publish the
+underlying idea:
+
+  https://blog.pivotal.io/labs/labs/a-concurrent-ring-buffer-for-go
 
 Usage:
 
-r := ringbuf.New()
+  r := ringbuf.New()
 
-r.Input <- "blah"
-r.Flush() // if needed
-string = <- r.Output
+  r.Input <- "blah"
+  r.Flush() // if needed-- useful for testing
+  mystring = <- r.Output.(string)

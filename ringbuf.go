@@ -52,8 +52,7 @@ func (rb Ringbuf) Flush() {
 
 // maintains the input-to-output transfer
 func maintain(input <-chan interface{}, output chan interface{}) {
-	for {
-		var n interface{} = <- input
+	for n := range input {
 		for n != nil {
 			select {
 			case output <- n:
@@ -69,4 +68,5 @@ func maintain(input <-chan interface{}, output chan interface{}) {
 			}
 		}
 	}
+	close(output)
 }
