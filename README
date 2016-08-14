@@ -1,0 +1,9 @@
+A simple ring buffer implementation in Go, based on channels.
+
+Usage:
+
+r := ringbuf.New()
+
+r.Input <- "blah"
+r.Flush() // if needed
+string = <- r.Output
